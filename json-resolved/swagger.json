@@ -1,0 +1,1076 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Harver Mobile Recruiter API \n",
+    "version" : "1.0.0",
+    "title" : "Harver Mobile Recruiter API",
+    "contact" : {
+      "email" : "jayampathy@gapstars.net"
+    }
+  },
+  "host" : "ck0qsgaqg2.execute-api.us-east-1.amazonaws.com",
+  "basePath" : "/dev",
+  "tags" : [ {
+    "name" : "user",
+    "description" : "user is about authenticated recruiter"
+  }, {
+    "name" : "account",
+    "description" : "account is about assigned account for the authenticated recruiter"
+  }, {
+    "name" : "vacancy",
+    "description" : "vacancy is about available vacancies for the account"
+  }, {
+    "name" : "candidate",
+    "description" : "candidate is the applicant for the vacancy"
+  }, {
+    "name" : "note",
+    "description" : "note is about the candidate releated note created by the recruiter to share among other recruiters"
+  }, {
+    "name" : "invite",
+    "description" : "invite candidate"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/me/{email}" : {
+      "get" : {
+        "tags" : [ "user" ],
+        "summary" : "Get user by email",
+        "operationId" : "getUserByEmail",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "email",
+          "in" : "path",
+          "description" : "The email that needs to be fetched.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          },
+          "400" : {
+            "description" : "Invalid username supplied"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      }
+    },
+    "/inviteLink" : {
+      "get" : {
+        "tags" : [ "invite" ],
+        "summary" : "get invitation link",
+        "operationId" : "getInvitationLink",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "account_id",
+          "in" : "query",
+          "description" : "The account id to invite candidate.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "vacancy_id",
+          "in" : "query",
+          "description" : "The vacancy id to invite candidate.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "400" : {
+            "description" : "Invalid user"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      }
+    },
+    "/accounts{user_id}" : {
+      "get" : {
+        "tags" : [ "account" ],
+        "summary" : "Get list of accounts assigned for the recruiter",
+        "operationId" : "getUserAccounts",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "path",
+          "description" : "pass recruiter id to looking for assigned accounts",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Account"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid user"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      }
+    },
+    "/accounts{account_id}/candidateStatus" : {
+      "get" : {
+        "tags" : [ "account" ],
+        "summary" : "Get list of candidate status assigned for the account",
+        "operationId" : "getAccountCandidateStatus",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "account_id",
+          "in" : "path",
+          "description" : "The account id to fetch assigned candidate status.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CandidateStatus"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid account"
+          },
+          "404" : {
+            "description" : "Account not found"
+          }
+        }
+      }
+    },
+    "/accounts{account_id}/vacancies" : {
+      "get" : {
+        "tags" : [ "account" ],
+        "summary" : "Get list of vacancies assigned for the account",
+        "operationId" : "getAccountVacancies",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "account_id",
+          "in" : "path",
+          "description" : "The account id to fetch assigned vacancies.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Vacancy"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid account"
+          },
+          "404" : {
+            "description" : "Account not found"
+          }
+        }
+      }
+    },
+    "/accounts{account_id}/sources" : {
+      "get" : {
+        "tags" : [ "account" ],
+        "summary" : "Get list of sources for the account",
+        "operationId" : "getAccountSources",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "account_id",
+          "in" : "path",
+          "description" : "The account id to fetch account sources.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Source"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid account"
+          },
+          "404" : {
+            "description" : "Account not found"
+          }
+        }
+      }
+    },
+    "/vacancies{vacancy_id}/locations" : {
+      "get" : {
+        "tags" : [ "vacancy" ],
+        "summary" : "Get list of vacancies assigned for the account",
+        "operationId" : "getVacancyLocations",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "vacancy_id",
+          "in" : "path",
+          "description" : "The vacancy id to fetch assigned locations.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "account_id",
+          "in" : "query",
+          "description" : "The account id to fetch assigned vacancy.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Location"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid account"
+          },
+          "404" : {
+            "description" : "Account not found"
+          }
+        }
+      }
+    },
+    "/candidates" : {
+      "get" : {
+        "tags" : [ "candidate" ],
+        "summary" : "Get candidates for the vacancy",
+        "operationId" : "getCandidates",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "account_id",
+          "in" : "query",
+          "description" : "The account id to fetch candidates.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "vacancy_id",
+          "in" : "query",
+          "description" : "The vacancy id to fetch candidates.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "location_id",
+          "in" : "query",
+          "description" : "The location id to fetch filter candidates.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "source_id",
+          "in" : "query",
+          "description" : "The source id to filter candidates.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "searchString",
+          "in" : "query",
+          "description" : "pass an optional search string for looking up candidates by name",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of records to return",
+          "required" : false,
+          "type" : "integer",
+          "maximum" : 50,
+          "minimum" : 0,
+          "format" : "int32"
+        }, {
+          "name" : "next_page",
+          "in" : "query",
+          "description" : "maximum number of records to return",
+          "required" : false,
+          "type" : "integer",
+          "minimum" : 0,
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CandidateResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid account"
+          },
+          "404" : {
+            "description" : "Account not found"
+          }
+        }
+      }
+    },
+    "/candidates/{candidate_id}" : {
+      "get" : {
+        "tags" : [ "candidate" ],
+        "summary" : "Get candidate",
+        "operationId" : "getCandidate",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "candidate_id",
+          "in" : "path",
+          "description" : "The candidate id to fetch.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "account_id",
+          "in" : "query",
+          "description" : "The account id to fetch candidate.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "vacancy_id",
+          "in" : "query",
+          "description" : "The vacancy id to fetch candidate.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Candidate"
+            }
+          },
+          "400" : {
+            "description" : "Invalid account"
+          },
+          "404" : {
+            "description" : "Account not found"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "candidate" ],
+        "summary" : "Update candidate status",
+        "operationId" : "updateCandidateStatus",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "candidate_id",
+          "in" : "path",
+          "description" : "The candidate id to fetch candidate.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Updated user object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CandidateStatusUpdate"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Candidate"
+            }
+          },
+          "400" : {
+            "description" : "Invalid account"
+          },
+          "404" : {
+            "description" : "Account not found"
+          }
+        }
+      }
+    },
+    "/candidates/{candidate_id}/scores" : {
+      "get" : {
+        "tags" : [ "candidate" ],
+        "summary" : "Get candidate scores",
+        "operationId" : "getCandidateScores",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "candidate_id",
+          "in" : "path",
+          "description" : "The candidate id to fetch candidate scores.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "account_id",
+          "in" : "query",
+          "description" : "The account id to fetch candidate scores.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "vacancy_id",
+          "in" : "query",
+          "description" : "The vacancy id to fetch candidate scores.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CandidateScoreResponse"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid account"
+          },
+          "404" : {
+            "description" : "Account not found"
+          }
+        }
+      }
+    },
+    "/candidates/{candidate_id}/notes" : {
+      "get" : {
+        "tags" : [ "candidate" ],
+        "summary" : "Get candidate notes",
+        "operationId" : "getCandidateNotes",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "candidate_id",
+          "in" : "path",
+          "description" : "The candidate id to fetch candidate notes.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "account_id",
+          "in" : "query",
+          "description" : "The account id to fetch candidate notes.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "vacancy_id",
+          "in" : "query",
+          "description" : "The vacancy id to fetch candidate notes.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of records to return",
+          "required" : false,
+          "type" : "integer",
+          "maximum" : 50,
+          "minimum" : 0,
+          "format" : "int32"
+        }, {
+          "name" : "next_page",
+          "in" : "query",
+          "description" : "maximum number of records to return",
+          "required" : false,
+          "type" : "integer",
+          "minimum" : 0,
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CandidateNoteResponse"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid account"
+          },
+          "404" : {
+            "description" : "Account not found"
+          }
+        }
+      }
+    },
+    "/notes{note_id}" : {
+      "get" : {
+        "tags" : [ "note" ],
+        "summary" : "Get candidate note",
+        "operationId" : "getCandidateNote",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "note_id",
+          "in" : "path",
+          "description" : "The note id to fetch candidate note.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "candidate_id",
+          "in" : "query",
+          "description" : "The candidate id to fetch candidate notes.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "account_id",
+          "in" : "query",
+          "description" : "The account id to fetch candidate note.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "vacancy_id",
+          "in" : "query",
+          "description" : "The vacancy id to fetch candidate note.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "type" : "object",
+              "properties" : { }
+            }
+          },
+          "400" : {
+            "description" : "Invalid account"
+          },
+          "404" : {
+            "description" : "Account not found"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "note" ],
+        "summary" : "Add a new note to the candidate",
+        "operationId" : "addCandidateNote",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Note object that needs to be added to the store",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Note"
+          }
+        } ],
+        "responses" : {
+          "405" : {
+            "description" : "Invalid input"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "note" ],
+        "summary" : "Update candidate note",
+        "operationId" : "updateCandidateNote",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "note_id",
+          "in" : "path",
+          "description" : "The note id to fetch candidate note.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Updated note object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CandidateNoteUpdate"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "type" : "object",
+              "properties" : { }
+            }
+          },
+          "400" : {
+            "description" : "Invalid account"
+          },
+          "404" : {
+            "description" : "Account not found"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "note" ],
+        "summary" : "Delete candidate note",
+        "operationId" : "deleteCandidateNote",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "note_id",
+          "in" : "path",
+          "description" : "The note id to delete note.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid account"
+          },
+          "404" : {
+            "description" : "Account not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "User" : {
+      "type" : "object",
+      "required" : [ "email", "firstName", "lastName" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "User Id"
+        },
+        "firstName" : {
+          "type" : "string",
+          "example" : "Test"
+        },
+        "lastName" : {
+          "type" : "string",
+          "example" : "Test"
+        },
+        "email" : {
+          "type" : "string",
+          "format" : "email",
+          "example" : "test@test.com"
+        }
+      }
+    },
+    "Account" : {
+      "type" : "object",
+      "required" : [ "accountName", "id", "logo" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Account Id"
+        },
+        "accountName" : {
+          "type" : "string",
+          "example" : "Test",
+          "description" : "Display name of the account"
+        },
+        "domain" : {
+          "type" : "string",
+          "example" : "www.google.com",
+          "description" : "Account domain URL"
+        },
+        "logo" : {
+          "type" : "string",
+          "example" : "www.google.com/logo.png",
+          "description" : "Account logo URL"
+        }
+      }
+    },
+    "Vacancy" : {
+      "type" : "object",
+      "required" : [ "id", "vacancyName" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Vancancy id"
+        },
+        "vacancyName" : {
+          "type" : "string",
+          "example" : "Customer Service Executive",
+          "description" : "Display name of the vacancy"
+        },
+        "location" : {
+          "type" : "string",
+          "description" : "Vacancy Location"
+        },
+        "company" : {
+          "type" : "string",
+          "description" : "Vacancy offered company"
+        },
+        "language" : {
+          "type" : "string",
+          "example" : "EN",
+          "description" : "Vacancy Language"
+        },
+        "status" : {
+          "type" : "string",
+          "example" : "Open",
+          "description" : "Vacancy Status",
+          "enum" : [ "Open", "Close", "Draft" ]
+        }
+      }
+    },
+    "Location" : {
+      "type" : "object",
+      "required" : [ "id", "name" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Location id"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "Google",
+          "description" : "Display name of the geo location"
+        }
+      }
+    },
+    "Source" : {
+      "type" : "object",
+      "required" : [ "id", "name" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Source Id"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "Jobvite",
+          "description" : "Display name of the source"
+        },
+        "location" : {
+          "type" : "string",
+          "description" : "Location name of the source"
+        }
+      }
+    },
+    "Candidate" : {
+      "type" : "object",
+      "required" : [ "account", "candidateStatus", "firstName", "id", "lastName", "matchingScore", "registeredDate", "vacancy", "viewedDate" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Candidate id"
+        },
+        "account" : {
+          "description" : "Candidate assigned account",
+          "$ref" : "#/definitions/Account"
+        },
+        "vacancy" : {
+          "description" : "Candidate assigned vacancy",
+          "$ref" : "#/definitions/Vacancy"
+        },
+        "address" : {
+          "description" : "Candidate address",
+          "$ref" : "#/definitions/Address"
+        },
+        "initials" : {
+          "type" : "string",
+          "example" : "A.B",
+          "description" : "Candidate initials"
+        },
+        "firstName" : {
+          "type" : "string",
+          "description" : "Candidate first name"
+        },
+        "middleName" : {
+          "type" : "string",
+          "description" : "Candidate middle name"
+        },
+        "lastName" : {
+          "type" : "string",
+          "description" : "Candidate last name"
+        },
+        "nationality" : {
+          "type" : "string",
+          "description" : "Candidate nationality"
+        },
+        "email" : {
+          "type" : "string",
+          "format" : "email",
+          "example" : "test@test.com",
+          "description" : "Candidate email"
+        },
+        "telephone" : {
+          "type" : "string",
+          "example" : "3.1307030855E10",
+          "description" : "Candidate phone number"
+        },
+        "birthDate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2016-08-29",
+          "description" : "Candidate date of birth in yyyy-MM-dd format"
+        },
+        "registeredDate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2016-08-29T09:12:33.001Z",
+          "description" : "Candidate registered date"
+        },
+        "viewedDate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2016-08-29T09:12:33.001Z",
+          "description" : "Candidate viewed date by the Recruiter"
+        },
+        "matchingScore" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 20,
+          "description" : "Candidate matching score as a percentage value",
+          "default" : 0
+        },
+        "candidateStatus" : {
+          "type" : "string",
+          "example" : "NEW",
+          "description" : "Candidate Status",
+          "enum" : [ "IN PROGRESS", "NEW", "TALENT POOL", "SHORTLISTED", "INVITED", "REJECTED", "HIRED", "CONTRACT" ],
+          "default" : "NEW"
+        }
+      }
+    },
+    "CandidateStatusUpdate" : {
+      "type" : "object",
+      "required" : [ "account_id", "candidate_status", "vacancy_id" ],
+      "properties" : {
+        "account_id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Account id"
+        },
+        "vacancy_id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Vacancy id"
+        },
+        "candidate_status" : {
+          "type" : "string",
+          "example" : "NEW",
+          "description" : "Candidate Status",
+          "enum" : [ "IN PROGRESS", "NEW", "TALENT POOL", "SHORTLISTED", "INVITED", "REJECTED", "HIRED", "CONTRACT" ],
+          "default" : "NEW"
+        }
+      }
+    },
+    "CandidateStatus" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "NEW",
+          "description" : "Candidate Status",
+          "enum" : [ "IN PROGRESS", "NEW", "TALENT POOL", "SHORTLISTED", "INVITED", "REJECTED", "HIRED", "CONTRACT" ],
+          "default" : "NEW"
+        }
+      }
+    },
+    "Address" : {
+      "type" : "object",
+      "properties" : {
+        "postalCode" : {
+          "type" : "string",
+          "example" : "1234AA",
+          "description" : "Postal Code"
+        },
+        "city" : {
+          "type" : "string",
+          "example" : "Amsterdam",
+          "description" : "City"
+        },
+        "streetName" : {
+          "type" : "string",
+          "example" : "ABC Street",
+          "description" : "Street Name"
+        },
+        "country" : {
+          "type" : "string",
+          "example" : "Netherlands",
+          "description" : "Country"
+        }
+      }
+    },
+    "Note" : {
+      "type" : "object",
+      "required" : [ "author", "createdDate", "id", "note" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Note id"
+        },
+        "note" : {
+          "type" : "string",
+          "description" : "Note"
+        },
+        "createdDate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2016-08-29T09:12:33.001Z",
+          "description" : "Candidate registered date"
+        },
+        "updatedDate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2016-08-29T09:12:33.001Z",
+          "description" : "Candidate registered date"
+        },
+        "author" : {
+          "description" : "Author of the note",
+          "$ref" : "#/definitions/User"
+        }
+      }
+    },
+    "Score" : {
+      "type" : "object",
+      "properties" : {
+        "benchmark" : {
+          "type" : "string",
+          "example" : "Netherlands",
+          "description" : "Country"
+        },
+        "candidateValue" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 20,
+          "description" : "Candidate value for the benchmark",
+          "default" : 0
+        }
+      }
+    },
+    "Meta" : {
+      "type" : "object",
+      "properties" : {
+        "pagination" : {
+          "description" : "Pagination",
+          "$ref" : "#/definitions/Page"
+        }
+      }
+    },
+    "Page" : {
+      "type" : "object",
+      "properties" : {
+        "total" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 20,
+          "description" : "total number of records",
+          "default" : 0
+        },
+        "currentPage" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 20,
+          "description" : "records current page",
+          "default" : 0
+        },
+        "totalPages" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 20,
+          "description" : "Total number of results pages",
+          "default" : 0
+        }
+      }
+    },
+    "CandidateResponse" : {
+      "type" : "object",
+      "properties" : {
+        "candidates" : {
+          "description" : "Candidates",
+          "$ref" : "#/definitions/Candidate"
+        },
+        "meta" : {
+          "description" : "Pagination",
+          "$ref" : "#/definitions/Meta"
+        }
+      }
+    },
+    "CandidateScoreResponse" : {
+      "type" : "object",
+      "properties" : {
+        "scoreCategory" : {
+          "type" : "string",
+          "example" : "Personality Fit",
+          "description" : "Score Category e.g. Personality Fit, Skills",
+          "enum" : [ "Personality Fit", "Skills" ]
+        },
+        "values" : {
+          "description" : "Candidates scores for the selected category",
+          "$ref" : "#/definitions/Score"
+        }
+      }
+    },
+    "CandidateNoteResponse" : {
+      "type" : "object",
+      "properties" : {
+        "notes" : {
+          "description" : "Notes",
+          "$ref" : "#/definitions/Note"
+        },
+        "meta" : {
+          "description" : "Pagination",
+          "$ref" : "#/definitions/Meta"
+        }
+      }
+    },
+    "CandidateNoteUpdate" : {
+      "type" : "object",
+      "required" : [ "account_id", "candidate_id", "vacancy_id" ],
+      "properties" : {
+        "account_id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Account id"
+        },
+        "vacancy_id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Vacancy id"
+        },
+        "candidate_id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Candidate id"
+        },
+        "note" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
