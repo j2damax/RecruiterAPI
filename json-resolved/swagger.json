@@ -53,10 +53,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid username supplied"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "User not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       }
@@ -89,10 +95,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid user"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "User not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       }
@@ -122,10 +134,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid user"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "User not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       }
@@ -155,10 +173,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid account"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "Account not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       }
@@ -188,10 +212,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid account"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "Account not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       }
@@ -221,10 +251,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid account"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "Account not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       }
@@ -260,10 +296,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid account"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "Account not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       }
@@ -331,10 +373,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid account"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "Account not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       }
@@ -373,10 +421,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid account"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "Account not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       },
@@ -409,10 +463,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid account"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "Account not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       }
@@ -454,10 +514,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid account"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "Account not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       }
@@ -516,10 +582,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid account"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "Account not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       }
@@ -565,10 +637,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid account"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "Account not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       },
@@ -588,8 +666,23 @@
           }
         } ],
         "responses" : {
-          "405" : {
-            "description" : "Invalid input"
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
+          },
+          "400" : {
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       },
@@ -623,10 +716,16 @@
             }
           },
           "400" : {
-            "description" : "Invalid account"
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "Account not found"
+          "500" : {
+            "description" : "Internal server error occured",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       },
@@ -644,11 +743,17 @@
           "type" : "string"
         } ],
         "responses" : {
-          "400" : {
-            "description" : "Invalid account"
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           },
-          "404" : {
-            "description" : "Account not found"
+          "400" : {
+            "description" : "Illegal arguments received",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
           }
         }
       }
@@ -1069,6 +1174,32 @@
         },
         "note" : {
           "type" : "string"
+        }
+      }
+    },
+    "Message" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "description" : "Currently matching the HTTP response code"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      },
+      "description" : "A message representing error or success",
+      "example" : {
+        "code" : 200,
+        "message" : "OK"
+      }
+    },
+    "DeviceType" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string",
+          "enum" : [ "android", "ios" ]
         }
       }
     }
