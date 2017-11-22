@@ -109,7 +109,7 @@
         }
       }
     },
-    "/accounts{user_id}" : {
+    "/accounts/{user_id}" : {
       "get" : {
         "tags" : [ "account" ],
         "summary" : "Get list of accounts assigned for the recruiter",
@@ -596,7 +596,7 @@
         }
       }
     },
-    "/notes{note_id}" : {
+    "/notes/{note_id}" : {
       "get" : {
         "tags" : [ "note" ],
         "summary" : "Get candidate note",
