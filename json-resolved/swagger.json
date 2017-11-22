@@ -91,7 +91,7 @@
           "200" : {
             "description" : "Successful operation",
             "schema" : {
-              "type" : "string"
+              "$ref" : "#/definitions/Message"
             }
           },
           "400" : {
