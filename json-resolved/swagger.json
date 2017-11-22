@@ -770,17 +770,14 @@
           "description" : "User Id"
         },
         "firstName" : {
-          "type" : "string",
-          "example" : "Test"
+          "type" : "string"
         },
         "lastName" : {
-          "type" : "string",
-          "example" : "Test"
+          "type" : "string"
         },
         "email" : {
           "type" : "string",
-          "format" : "email",
-          "example" : "test@test.com"
+          "format" : "email"
         }
       }
     },
@@ -795,17 +792,14 @@
         },
         "accountName" : {
           "type" : "string",
-          "example" : "Test",
           "description" : "Display name of the account"
         },
         "domain" : {
           "type" : "string",
-          "example" : "www.google.com",
           "description" : "Account domain URL"
         },
         "logo" : {
           "type" : "string",
-          "example" : "www.google.com/logo.png",
           "description" : "Account logo URL"
         }
       }
@@ -821,7 +815,6 @@
         },
         "vacancyName" : {
           "type" : "string",
-          "example" : "Customer Service Executive",
           "description" : "Display name of the vacancy"
         },
         "location" : {
@@ -834,12 +827,10 @@
         },
         "language" : {
           "type" : "string",
-          "example" : "EN",
           "description" : "Vacancy Language"
         },
         "status" : {
           "type" : "string",
-          "example" : "Open",
           "description" : "Vacancy Status",
           "enum" : [ "Open", "Close", "Draft" ]
         }
@@ -856,7 +847,6 @@
         },
         "name" : {
           "type" : "string",
-          "example" : "Google",
           "description" : "Display name of the geo location"
         }
       }
@@ -872,7 +862,6 @@
         },
         "name" : {
           "type" : "string",
-          "example" : "Jobvite",
           "description" : "Display name of the source"
         },
         "location" : {
@@ -904,7 +893,6 @@
         },
         "initials" : {
           "type" : "string",
-          "example" : "A.B",
           "description" : "Candidate initials"
         },
         "firstName" : {
@@ -926,42 +914,35 @@
         "email" : {
           "type" : "string",
           "format" : "email",
-          "example" : "test@test.com",
           "description" : "Candidate email"
         },
         "telephone" : {
           "type" : "string",
-          "example" : "3.1307030855E10",
           "description" : "Candidate phone number"
         },
         "birthDate" : {
           "type" : "string",
           "format" : "date-time",
-          "example" : "2016-08-29",
           "description" : "Candidate date of birth in yyyy-MM-dd format"
         },
         "registeredDate" : {
           "type" : "string",
           "format" : "date-time",
-          "example" : "2016-08-29T09:12:33.001Z",
           "description" : "Candidate registered date"
         },
         "viewedDate" : {
           "type" : "string",
           "format" : "date-time",
-          "example" : "2016-08-29T09:12:33.001Z",
           "description" : "Candidate viewed date by the Recruiter"
         },
         "matchingScore" : {
           "type" : "integer",
           "format" : "int64",
-          "example" : 20,
           "description" : "Candidate matching score as a percentage value",
           "default" : 0
         },
         "candidateStatus" : {
           "type" : "string",
-          "example" : "NEW",
           "description" : "Candidate Status",
           "enum" : [ "IN PROGRESS", "NEW", "TALENT POOL", "SHORTLISTED", "INVITED", "REJECTED", "HIRED", "CONTRACT" ],
           "default" : "NEW"
@@ -984,7 +965,6 @@
         },
         "candidate_status" : {
           "type" : "string",
-          "example" : "NEW",
           "description" : "Candidate Status",
           "enum" : [ "IN PROGRESS", "NEW", "TALENT POOL", "SHORTLISTED", "INVITED", "REJECTED", "HIRED", "CONTRACT" ],
           "default" : "NEW"
@@ -997,7 +977,6 @@
       "properties" : {
         "name" : {
           "type" : "string",
-          "example" : "NEW",
           "description" : "Candidate Status",
           "enum" : [ "IN PROGRESS", "NEW", "TALENT POOL", "SHORTLISTED", "INVITED", "REJECTED", "HIRED", "CONTRACT" ],
           "default" : "NEW"
@@ -1009,22 +988,18 @@
       "properties" : {
         "postalCode" : {
           "type" : "string",
-          "example" : "1234AA",
           "description" : "Postal Code"
         },
         "city" : {
           "type" : "string",
-          "example" : "Amsterdam",
           "description" : "City"
         },
         "streetName" : {
           "type" : "string",
-          "example" : "ABC Street",
           "description" : "Street Name"
         },
         "country" : {
           "type" : "string",
-          "example" : "Netherlands",
           "description" : "Country"
         }
       }
@@ -1045,13 +1020,11 @@
         "createdDate" : {
           "type" : "string",
           "format" : "date-time",
-          "example" : "2016-08-29T09:12:33.001Z",
           "description" : "Candidate registered date"
         },
         "updatedDate" : {
           "type" : "string",
           "format" : "date-time",
-          "example" : "2016-08-29T09:12:33.001Z",
           "description" : "Candidate registered date"
         },
         "author" : {
@@ -1065,13 +1038,11 @@
       "properties" : {
         "benchmark" : {
           "type" : "string",
-          "example" : "Netherlands",
           "description" : "Country"
         },
         "candidateValue" : {
           "type" : "integer",
           "format" : "int64",
-          "example" : 20,
           "description" : "Candidate value for the benchmark",
           "default" : 0
         }
@@ -1092,21 +1063,18 @@
         "total" : {
           "type" : "integer",
           "format" : "int64",
-          "example" : 20,
           "description" : "total number of records",
           "default" : 0
         },
         "currentPage" : {
           "type" : "integer",
           "format" : "int64",
-          "example" : 20,
           "description" : "records current page",
           "default" : 0
         },
         "totalPages" : {
           "type" : "integer",
           "format" : "int64",
-          "example" : 20,
           "description" : "Total number of results pages",
           "default" : 0
         }
@@ -1130,7 +1098,6 @@
       "properties" : {
         "scoreCategory" : {
           "type" : "string",
-          "example" : "Personality Fit",
           "description" : "Score Category e.g. Personality Fit, Skills",
           "enum" : [ "Personality Fit", "Skills" ]
         },
@@ -1188,11 +1155,7 @@
           "type" : "string"
         }
       },
-      "description" : "A message representing error or success",
-      "example" : {
-        "code" : 200,
-        "message" : "OK"
-      }
+      "description" : "A message representing error or success"
     },
     "DeviceType" : {
       "type" : "object",
