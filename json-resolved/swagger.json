@@ -148,7 +148,7 @@
         }
       }
     },
-    "/accounts{account_id}/candidateStatus" : {
+    "/accounts/{account_id}/candidateStatus" : {
       "get" : {
         "tags" : [ "account" ],
         "summary" : "Get list of candidate status assigned for the account",
@@ -187,7 +187,7 @@
         }
       }
     },
-    "/accounts{account_id}/vacancies" : {
+    "/accounts/{account_id}/vacancies" : {
       "get" : {
         "tags" : [ "account" ],
         "summary" : "Get list of vacancies assigned for the account",
@@ -226,7 +226,7 @@
         }
       }
     },
-    "/accounts{account_id}/sources" : {
+    "/accounts/{account_id}/sources" : {
       "get" : {
         "tags" : [ "account" ],
         "summary" : "Get list of sources for the account",
@@ -265,7 +265,7 @@
         }
       }
     },
-    "/vacancies{vacancy_id}/locations" : {
+    "/vacancies/{vacancy_id}/locations" : {
       "get" : {
         "tags" : [ "vacancy" ],
         "summary" : "Get list of vacancies assigned for the account",
