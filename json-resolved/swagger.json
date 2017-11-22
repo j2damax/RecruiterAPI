@@ -109,20 +109,14 @@
         }
       }
     },
-    "/accounts/{user_id}" : {
+    "/accounts" : {
       "get" : {
         "tags" : [ "account" ],
         "summary" : "Get list of accounts assigned for the recruiter",
         "operationId" : "getUserAccounts",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "user_id",
-          "in" : "path",
-          "description" : "pass recruiter id to looking for assigned accounts",
-          "required" : true,
-          "type" : "string"
-        } ],
+        "parameters" : [ ],
         "responses" : {
           "200" : {
             "description" : "Successful operation",
